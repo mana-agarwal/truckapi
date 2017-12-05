@@ -12,7 +12,6 @@ enum34==1.1.6
 flake8==3.5.0
 Flask==0.12.2
 Flask-MySQL==1.4.0
-fpconst==0.7.2
 functools32==3.2.3.post2
 gunicorn==19.7.1
 idna==2.6
