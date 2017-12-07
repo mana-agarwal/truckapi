@@ -1,10 +1,10 @@
-from flask import Flask, jsonify, render_template, request
-from flask_restful import Resource, Api
+from flask import Flask, jsonify, request
+from flask_restful import Api
 from flask_restful import reqparse
 from flaskext.mysql import MySQL
 from flask.views import View
 import json
-from flask_paginate import Pagination, get_page_parameter
+from app import app 
 
 
 
