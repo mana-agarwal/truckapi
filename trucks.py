@@ -24,16 +24,22 @@ api = Api(app)
 @app.route("/display")
 
 def display():
+	parser = reqparse.RequestParser()
+        parser.add_argument('page_number', type=str)
+        args = parser.parse_args()
+        pageno = args['page_number']
+	if (pageno is None):
+		pageno=1
 	cur = mysql.connect().cursor()
 	cur.execute('''select * from trucks''')
 	data=cur.fetchall()
 	rows=[]
-	for item in data:
+
+	for item in data[(int(pageno)-1)*10:(int(pageno)*10)]:
 		i={'truck_number':str(item[0]), 'latitude':str(item[1]),'longitude':str(item[2]) }
 		rows.append(i)
-	page = request.args.get(get_page_parameter(), type=int, default=10)
-	pagination = Pagination(page=page, total=len(rows), record_name='rows')
-	return render_template('trucks.html', objects=rows,pagination=pagination)
+	return jsonify(rows)
+	
 
 
 @app.route('/get_fields')
