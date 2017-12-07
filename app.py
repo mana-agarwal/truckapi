@@ -4,7 +4,7 @@ from flask_restful import reqparse
 from flaskext.mysql import MySQL
 from flask.views import View
 import json
-from app import app 
+#from app import app 
 
 
 
